@@ -126,9 +126,3 @@ form.addEventListener('submit', async (e) => {
 | Edge 90+ | ✅ Full |
 
 > `backdrop-filter` requires Safari 15+ or Chrome 76+ for glassmorphism effect.
-
----
-
-## License
-
-Distributed under the [MIT License](LICENSE). Free for personal and commercial use.
