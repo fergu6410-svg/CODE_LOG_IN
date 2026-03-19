@@ -1,86 +1,134 @@
-# 🔐 NexusPortal — Login Page
+<div align="center">
 
-Una página de inicio de sesión **moderna, interactiva y completamente responsiva**, construida con HTML, CSS y JavaScript vanilla. Diseñada para impresionar desde el primer vistazo.
+# NexusPortal — Login Page
 
----
+**A sleek, fully interactive authentication UI built with pure HTML, CSS & JavaScript.**
 
-## ✨ Características
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-ES2020-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License: MIT](https://img.shields.io/badge/License-MIT-6c63ff?style=flat)](LICENSE)
 
-- 🎨 **Diseño glassmorphism** con fondo animado de blobs y partículas en canvas
-- 🌐 **Google Sign-In (OAuth 2.0)** integrado mediante Google Identity Services (GIS)
-- ✅ **Validación en tiempo real** de email y contraseña con estados visuales
-- 🔔 **Sistema de toasts** para notificaciones no intrusivas
-- 👁️ **Toggle de contraseña** visible / oculta
-- 💫 **Micro-animaciones** — ripple en el botón, tilt en botones sociales, shake en errores
-- 🏆 **Overlay de éxito** animado con SVG al autenticarse
-- 📱 **Totalmente responsivo** (mobile-first, breakpoints en 900px y 480px)
-- ♿ **Accesibilidad** — atributos `aria-label`, roles ARIA, navegación por teclado
+</div>
 
 ---
 
-## 📁 Estructura
+## Overview
+
+NexusPortal is a production-quality login page template featuring a dark glassmorphism design, animated particle canvas, real-time form validation, and Google OAuth 2.0 integration — all without frameworks or build tools.
+
+---
+
+## Features
+
+| Feature | Description |
+|---|---|
+| **Glassmorphism UI** | Dark theme with frosted-glass card, gradient blobs, and depth layering |
+| **Particle System** | Canvas-based animated particle network drawn on every frame |
+| **Google Sign-In** | Full Google Identity Services (GIS) OAuth 2.0 integration with persistent Client ID |
+| **Real-time Validation** | Inline email/password validation with animated error states |
+| **Toast Notifications** | Non-blocking toast system with success, error, and info variants |
+| **Micro-animations** | Ripple on submit, 3D tilt on social buttons, shake on invalid submit |
+| **Success Overlay** | SVG stroke-animated checkmark overlay on successful authentication |
+| **Fully Responsive** | Adapts cleanly from desktop (split-panel) to mobile (single-column) |
+| **Accessible** | `aria-label` attributes, live region for toasts, keyboard navigation |
+
+---
+
+## Project Structure
 
 ```
 login-page/
-├── index.html   # Estructura semántica de la página
-├── style.css    # Estilos con variables CSS, animaciones y media queries
-└── script.js    # Lógica: partículas, validación, Google OAuth, toasts, efectos
+├── index.html      # Semantic HTML structure & SVG assets
+├── style.css       # Design system, animations, and responsive layout
+└── script.js       # Particle engine, validation, Google OAuth, toast & effects
 ```
 
 ---
 
-## 🚀 Uso
+## Getting Started
 
-### Sin configuración
-Abre `index.html` directamente en tu navegador. La página es funcional como demo sin ningún backend.
+### Quick Start
 
-### Con Google Sign-In real
-1. Ve a [Google Cloud Console → Credenciales](https://console.cloud.google.com/apis/credentials)
-2. Crea un **OAuth 2.0 Client ID** de tipo *Aplicación web*
-3. Añade tu dominio en **Orígenes autorizados** (ej. `http://localhost`)
-4. Haz clic en el botón **Google** de la página y pega tu Client ID en el modal que aparece
-5. El ID se guarda en `localStorage` para sesiones futuras
+No build step required. Simply open `index.html` in any modern browser:
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/nexus-login-page.git
+
+# Open in browser
+open login-page/index.html
+```
+
+### Enabling Google Sign-In
+
+1. Go to [Google Cloud Console → Credentials](https://console.cloud.google.com/apis/credentials)
+2. Create an **OAuth 2.0 Client ID** for a *Web application*
+3. Add your domain to **Authorized JavaScript origins** (e.g. `http://localhost`)
+4. Click the **Google** button on the page and paste your Client ID into the setup modal
+5. The credential is persisted in `localStorage` for future sessions
+
+> **Note:** The GitHub OAuth button requires a backend server to complete the token exchange flow. A toast notification explains this to the user.
 
 ---
 
-## 🛠️ Tecnologías
+## Tech Stack
 
-| Tecnología | Uso |
+- **HTML5** — Semantic markup with inline SVG icons
+- **CSS3** — Custom properties, `backdrop-filter`, `@keyframes`, CSS Grid/Flexbox
+- **JavaScript ES2020+** — Canvas API, `async/await`, Google Identity Services
+- **Google Fonts** — [Inter](https://fonts.google.com/specimen/Inter) for clean typography
+
+---
+
+## Color System
+
+```css
+--primary:       #6c63ff   /* Brand violet */
+--primary-light: #a78bfa   /* Accents & gradients */
+--accent:        #f0abfc   /* Heading gradient */
+--bg:            #0a0a1a   /* Page background */
+--success:       #10b981   /* Valid state */
+--error:         #f87171   /* Error state */
+```
+
+---
+
+## Customization
+
+To connect a real backend, replace the simulated delay in `script.js`:
+
+```js
+// script.js — form submit handler
+form.addEventListener('submit', async (e) => {
+  // ...validation...
+
+  // Replace this block with your actual API call:
+  const response = await fetch('/api/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+  });
+
+  if (response.ok) showSuccessOverlay();
+});
+```
+
+---
+
+## Browser Support
+
+| Browser | Support |
 |---|---|
-| HTML5 semántico | Estructura accesible |
-| CSS3 (Vanilla) | Variables, animaciones, glassmorphism, grid |
-| JavaScript ES2020+ | Partículas, validación, OAuth, async/await |
-| Google Identity Services | Autenticación con Google |
-| Google Fonts — Inter | Tipografía moderna |
+| Chrome 90+ | ✅ Full |
+| Firefox 88+ | ✅ Full |
+| Safari 15+ | ✅ Full |
+| Edge 90+ | ✅ Full |
+
+> `backdrop-filter` requires Safari 15+ or Chrome 76+ for glassmorphism effect.
 
 ---
 
-## 🎨 Paleta de colores
+## License
 
-| Variable | Valor | Uso |
-|---|---|---|
-| `--primary` | `#6c63ff` | Color principal |
-| `--primary-light` | `#a78bfa` | Acentos, gradientes |
-| `--accent` | `#f0abfc` | Gradiente del título |
-| `--bg` | `#0a0a1a` | Fondo oscuro |
-| `--success` | `#10b981` | Validación correcta |
-| `--error` | `#f87171` | Errores de validación |
-
----
-
-## 📸 Vista previa
-
-> Panel izquierdo con brand + features animadas · Panel derecho con tarjeta glassmorphism · Partículas interconectadas en fondo
-
----
-
-## 📝 Notas
-
-- El botón de **GitHub** muestra un aviso informativo: el flujo OAuth de GitHub requiere un servidor backend para el intercambio de tokens.
-- El formulario de email/contraseña simula un login con un delay de 1.8s y overlay de éxito. Conecta tu propio backend modificando el listener `submit` en `script.js`.
-
----
-
-## 📄 Licencia
-
-MIT — libre para uso personal y comercial.
+Distributed under the [MIT License](LICENSE). Free for personal and commercial use.
